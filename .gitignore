@@ -1,2 +1,5 @@
 backend/model/final_vgg16_plant_health100.h5
 backend/venv
+backend/media/
+**/__pycache__/
+*.pyc
