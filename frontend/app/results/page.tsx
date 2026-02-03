@@ -76,8 +76,9 @@ export default function ResultsPage() {
                 <head>
                     <title>Laporan Klasifikasi Kesehatan Tanaman - ${result.session_id}</title>
                     <style>
+                        @page { size: auto; margin: 0mm; }
                         * { margin: 0; padding: 0; box-sizing: border-box; }
-                        body { font-family: 'Times New Roman', Times, serif; padding: 40px; color: #111; line-height: 1.5; }
+                        body { font-family: 'Times New Roman', Times, serif; padding: 40px; margin: 20px; color: #111; line-height: 1.5; }
                         .header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #000; padding-bottom: 20px; }
                         .header h1 { font-size: 24px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
                         .header p { color: #444; font-size: 12px; }
@@ -173,7 +174,6 @@ export default function ResultsPage() {
                     </div>
 
                     <div class="footer">
-                        <p>Dokumen ini dihasilkan secara otomatis oleh Sistem Cerdas Klasifikasi Kesehatan Tanaman Kentang.</p>
                     </div>
                 </body>
                 </html>

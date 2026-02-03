@@ -4,6 +4,10 @@ Replaces Django backend with a lightweight, fast API server.
 """
 
 import os
+
+# Set OpenBLAS to single-threaded mode to avoid memory issues
+os.environ['OPENBLAS_NUM_THREADS'] = '1'
+
 import shutil
 import uuid
 from pathlib import Path
@@ -151,4 +155,4 @@ async def get_results(session_id: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=22555, reload=True)
