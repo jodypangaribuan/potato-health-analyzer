@@ -1,0 +1,17 @@
+{
+  "coordinates": {},
+  "original_preview": "results/b5337e4b/original_preview.png",
+  "overlay_result": "results/b5337e4b/overlay_result.png",
+  "overlay_before_labels": "results/b5337e4b/overlay_before_labels.png",
+  "final_overlay": "results/b5337e4b/final_overlay.png",
+  "classification_summary": [
+    {
+      "zona_sehat": 54.51,
+      "zona_tidak_sehat": 45.49,
+      "mean_confidence": 0.25940001010894775,
+      "num_zones": 617,
+      "sehat_zones": 361,
+      "sakit_zones": 256
+    }
+  ]
+}

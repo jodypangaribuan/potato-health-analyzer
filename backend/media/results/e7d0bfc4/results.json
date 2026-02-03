@@ -1,0 +1,11 @@
+{
+  "coordinates": {},
+  "original_preview": "results/e7d0bfc4/original_preview.png",
+  "overlay_result": "results/e7d0bfc4/overlay_result.png",
+  "overlay_before_labels": "results/e7d0bfc4/overlay_before_labels.png",
+  "final_overlay": "results/e7d0bfc4/final_overlay.png",
+  "classification_summary": [
+    {
+      "zona_sehat": 54.51,
+      "zona_tidak_sehat": 45.49,
+      "mean_confidence": 
