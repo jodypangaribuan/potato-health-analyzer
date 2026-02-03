@@ -44,7 +44,19 @@ git clone https://github.com/jodypangaribuan/potato-health-analyzer.git
 cd potato-health-analyzer
 ```
 
-### 2. Setup Backend
+### 2. Setup Machine Learning Model
+
+1.  Download the trained model file (`final_vgg16_plant_health100.h5`).
+    -   **Download Link**: [https://huggingface.co/pangaribuan/potato_analyzer_vgg16/resolve/main/final_vgg16_plant_health100.h5?download=true]
+2.  Create a `model` folder inside the `backend` directory.
+3.  Place the downloaded `.h5` file into `backend/model/`.
+
+    Structure should look like this:
+    ```
+    backend/model/final_vgg16_plant_health100.h5
+    ```
+
+### 3. Setup Backend
 
 Navigate to the backend directory, create a virtual environment, and install dependencies.
 
@@ -76,7 +88,7 @@ The backend server runs on port **22555**.
 uvicorn main:app --reload --host 0.0.0.0 --port 22555
 ```
 
-### 3. Setup Frontend
+### 4. Setup Frontend
 
 Open a new terminal, navigate to the frontend directory, and install dependencies.
 
@@ -91,6 +103,27 @@ npm run dev
 ```
 
 The frontend will run at [http://localhost:22444](http://localhost:22444).
+
+## 🐳 Running with Docker (Recommended)
+
+To run the entire application (Frontend + Backend) using Docker:
+
+1.  Ensure **Docker** and **Docker Compose** are installed.
+2.  Run the following command in the root directory:
+
+    ```bash
+    docker-compose up --build -d
+    ```
+
+3.  Access the application:
+    -   **Frontend**: [http://localhost:22444](http://localhost:22444)
+    -   **Backend**: [http://localhost:22555](http://localhost:22555)
+
+4.  To stop the application:
+
+    ```bash
+    docker-compose down
+    ```
 
 ## Usage Guide
 
