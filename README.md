@@ -47,7 +47,7 @@ cd potato-health-analyzer
 ### 2. Setup Machine Learning Model
 
 1.  Download the trained model file (`final_vgg16_plant_health100.h5`).
-    -   **Download Link**: [https://huggingface.co/pangaribuan/potato_analyzer_vgg16/resolve/main/final_vgg16_plant_health100.h5?download=true]
+    -   **Download Link**: [Download from Hugging Face](https://huggingface.co/pangaribuan/potato_analyzer_vgg16/resolve/main/final_vgg16_plant_health100.h5?download=true)
 2.  Create a `model` folder inside the `backend` directory.
 3.  Place the downloaded `.h5` file into `backend/model/`.
 
@@ -116,8 +116,8 @@ To run the entire application (Frontend + Backend) using Docker:
     ```
 
 3.  Access the application:
-    -   **Frontend**: [http://localhost:22444](http://localhost:22444)
-    -   **Backend**: [http://localhost:22555](http://localhost:22555)
+    -   **Frontend**: [http://localhost:8080](http://localhost:8080)
+    -   **Backend**: [http://localhost:8080/docs](http://localhost:8080/docs)
 
 4.  To stop the application:
 
@@ -127,7 +127,7 @@ To run the entire application (Frontend + Backend) using Docker:
 
 ## Usage Guide
 
-1.  Open your browser and visit [http://localhost:22444](http://localhost:22444).
+1.  Open your browser and visit [http://localhost:8080](http://localhost:8080).
 2.  Upload the 4 required image files:
     -   **Original Image (RGB)**: Visual photo of the plant (JPG/PNG).
     -   **NIR Band**: Near-Infrared image (TIF).

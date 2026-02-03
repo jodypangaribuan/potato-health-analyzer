@@ -14,8 +14,21 @@ services:
   frontend:
     build: ./frontend
     container_name: potato-health-frontend
-    ports:
-      - "22444:22444"
+    # Expose internal port only, or mapped to a different host port if needed.
+    # We remove 80:22444 because Nginx will take port 80.
+    # We can leave it internal-only for Nginx to access.
     depends_on:
+      - backend
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: potato-health-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
       - backend
     restart: always
