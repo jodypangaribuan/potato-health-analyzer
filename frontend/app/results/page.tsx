@@ -33,7 +33,7 @@ interface AnalysisResult {
     classification_summary: ClassificationSummary[];
 }
 
-const API_BASE = "http://localhost:22555";
+const API_BASE = "";
 
 export default function ResultsPage() {
     const router = useRouter();

@@ -171,7 +171,7 @@ export default function HomePage() {
       formData.append("red", uploads.red.file!);
       formData.append("red_edge", uploads.red_edge.file!);
 
-      const response = await fetch("http://localhost:22555/api/analyze", {
+      const response = await fetch("/api/analyze", {
         method: "POST",
         body: formData,
       });
