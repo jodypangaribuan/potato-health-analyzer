@@ -3,8 +3,8 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: '/api/:path*',
-                destination: 'http://backend:22555/api/:path*',
+                source: '/api/results/:path*',
+                destination: 'http://backend:22555/api/results/:path*',
             },
             {
                 source: '/media/:path*',
