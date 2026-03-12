@@ -14,7 +14,7 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional
 
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
@@ -27,6 +27,17 @@ app = FastAPI(
     description="API for analyzing potato plant health using spectral imagery",
     version="1.0.0"
 )
+
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Catch-all handler to ensure errors always return JSON, not plain text."""
+    import traceback
+    traceback.print_exc()
+    return JSONResponse(
+        status_code=500,
+        content={"detail": f"Internal server error: {str(exc)}"}
+    )
 
 # CORS middleware for Next.js frontend
 app.add_middleware(
@@ -100,8 +111,10 @@ async def analyze_images(
             with open(file_path, "wb") as buffer:
                 shutil.copyfileobj(file.file, buffer)
             file_paths[name] = str(file_path)
+            print(f"[{session_id}] Saved {name}: {file.filename}")
         
         # Process images
+        print(f"[{session_id}] Starting image processing...")
         results = processor.process_images(
             original_path=file_paths["original"],
             nir_path=file_paths["nir"],
@@ -109,6 +122,7 @@ async def analyze_images(
             red_edge_path=file_paths["red_edge"],
             session_id=session_id
         )
+        print(f"[{session_id}] Processing complete.")
         
         # Build response with media URLs
         base_url = "/media"
@@ -129,10 +143,15 @@ async def analyze_images(
         return JSONResponse(content=response)
         
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         # Clean up on error
         if session_dir.exists():
             shutil.rmtree(session_dir)
-        raise HTTPException(status_code=500, detail=str(e))
+        return JSONResponse(
+            status_code=500,
+            content={"detail": f"Error processing images: {str(e)}"}
+        )
 
 
 @app.get("/api/results/{session_id}")

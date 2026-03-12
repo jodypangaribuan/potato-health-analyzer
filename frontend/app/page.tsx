@@ -179,8 +179,16 @@ export default function HomePage() {
       clearInterval(progressInterval);
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Terjadi kesalahan saat memproses");
+        let errorMessage = "Terjadi kesalahan saat memproses";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.detail || errorMessage;
+        } catch {
+          // Response is not JSON (e.g. proxy failure)
+          const text = await response.text().catch(() => "");
+          errorMessage = text || `Server error (${response.status})`;
+        }
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
