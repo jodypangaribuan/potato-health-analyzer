@@ -5,10 +5,13 @@ services:
     ports:
       - "22555:22555"
     volumes:
-      - ./backend:/app
-      - ./backend/media:/app/media
+      - backend-media:/app/media
     environment:
       - OPENBLAS_NUM_THREADS=1
+    deploy:
+      resources:
+        limits:
+          memory: 4g
     restart: always
 
   frontend:
@@ -19,3 +22,6 @@ services:
     depends_on:
       - backend
     restart: always
+
+volumes:
+  backend-media:
